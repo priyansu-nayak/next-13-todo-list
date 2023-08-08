@@ -1,12 +1,15 @@
 import { prisma } from '@/db'
 import Link from 'next/link'
 
+function getTodos(){
+  return prisma.todo.findMany()
+}
 
 export default async function Home() {
 
-  const todos = await prisma.todo.findMany(); //????
-
-  return <>
+  const todos = await getTodos() //????
+  // await prisma.todo.create({data:{title:"test",complete:false}})
+  return (<>
     <header className='flex justify-between mb-4 items-center' >
       <h1 className="text-2xl">Todos</h1>
       <Link className='border border-slate-300 
@@ -16,10 +19,10 @@ export default async function Home() {
     </header>
 
     <ul className='pl-4' >
-      {todos.map(todo =>(
-        <li key >{todo.title}</li>
+      {todos.map(todo => (
+        <li key={todo.id} >{todo.title}</li>
       ))}
     </ul>
 
-  </>
+  </>)
 }
