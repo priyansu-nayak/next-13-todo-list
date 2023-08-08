@@ -1,7 +1,7 @@
 import { prisma } from '@/db'
 import Link from 'next/link'
 
-function getTodos(){
+function getTodos() {
   return prisma.todo.findMany()
 }
 
@@ -20,7 +20,8 @@ export default async function Home() {
 
     <ul className='pl-4' >
       {todos.map(todo => (
-        <li key={todo.id} >{todo.title}</li>
+        // <li key={todo.id} >{todo.title}</li>
+        <TodoItem key={todo.id} {...todo}/>
       ))}
     </ul>
 
