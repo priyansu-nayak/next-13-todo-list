@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 async function createTodo (data:FormData){
-    // "use server"
+    "use server"
     console.log("HI")
 }
 
@@ -11,7 +11,7 @@ export default function Page() {
             <h1 className="text-2xl">New</h1>
         </header>
 
-        <form className="flex gap-2 flex-col">
+        <form action={createTodo} className="flex gap-2 flex-col">
             <input type="text" name="title"
                 className="border border-slate-300 bg-transparent 
             rounded px-2 py-1 outline-none focus-within:border-slate-100" />
